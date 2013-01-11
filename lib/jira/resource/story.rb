@@ -30,7 +30,7 @@ module JIRA
         end
         call = "/rest/greenhopper/1.0/epics/#{epic_link}/add"
         body = {"ignoreEpics" => true, "issueKeys" => [id]}.to_json
-        $client.put(call,body)
+        client.put(call,body)
       end
     end
   end
