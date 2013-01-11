@@ -35,7 +35,7 @@ module JIRA
         response = client.get(client.options[:rest_base_path] + "/search")
         json = parse_json(response.body)
         json['issues'].map do |issue|
-          client.Issue.build(issue)
+          client.send(self.name.split('::').last).build(issue)
         end
       end
 
@@ -44,7 +44,7 @@ module JIRA
         response = client.get(url)
         json = parse_json(response.body)
         json['issues'].map do |issue|
-          client.Issue.build(issue)
+          client.send(self.name.split('::').last).build(issue)
         end
       end
 
